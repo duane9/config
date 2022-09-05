@@ -1,0 +1,238 @@
+" brew install fzf fd nvim ripgrep bat
+" Put this file in ~/.config/nvim/init.vim
+" Install vim-plug: curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+" pip3 install pynvim
+" nvim
+" :PlugInstall
+
+" ============================
+" Start vim-plug
+" ============================
+
+call plug#begin('~/.config/nvim/plugged')
+
+" Linters and autocomplete
+Plug 'github/copilot.vim'
+Plug 'davidhalter/jedi-vim', {'dir': '~/.config/nvim/plugged/jedi-vim', 'do': 'git submodule update --init --recursive'}
+Plug 'dense-analysis/ale'
+Plug 'prettier/vim-prettier'
+
+" Everything else
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'duane9/nvim-rg'
+Plug 'alec-gibson/nvim-tetris'
+Plug 'stefandtw/quickfix-reflector.vim'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'embear/vim-foldsearch'
+Plug 'roblillack/vim-bufferlist'
+Plug 'osyo-manga/vim-anzu/'
+Plug 'ervandew/supertab'
+Plug 'gregsexton/MatchTag'
+Plug 'ap/vim-css-color'
+Plug 'Townk/vim-autoclose'
+Plug 'airblade/vim-gitgutter'
+Plug 'plasticboy/vim-markdown'
+Plug 'spaceinvader9/jellybeans.vim'
+Plug 'reedes/vim-pencil'
+call plug#end()
+
+" ============================
+" End vim-plug
+" ============================
+
+filetype plugin on
+filetype indent on
+syntax on
+
+let g:python3_host_prog = '/Users/duanehilton/.pyenv/versions/3.9.11/bin/python'
+
+" Color scheme settings
+set t_Co=257
+" colorscheme onedark
+colorscheme jellybeans
+set background=dark
+set conceallevel=0
+
+"ale linter
+let g:ale_linters = {'javascript': ['eslint'], 'python': ['flake8', 'pylint', 'pyright']}
+
+" bufferlist colors
+hi BufferSelected term=reverse ctermfg=black ctermbg=white cterm=bold
+hi BufferNormal term=NONE ctermfg=white ctermbg=black cterm=NONE
+
+" Change leader from default \ to ,
+let mapleader = ","
+
+" Markdown settings
+" set tw=64
+let g:pencil#autoformat = 0
+au BufRead,BufNewFile *.md call pencil#init({'wrap': 'soft', 'autoformat': 1})
+au BufRead,BufNewFile *.md setlocal conceallevel=2
+let g:vim_markdown_folding_disabled = 1
+set ignorecase
+
+" Statusline
+set statusline +=\ %F  " Full path to file
+set statusline +=%=%-14.(%l,%c%V%)  " Line, column-virtual column"
+hi StatusLine ctermbg=gray ctermfg=black
+
+" trace debugging
+map <leader>ps i    import pysnooper<CR>@pysnooper.snoop()<CR><Esc>
+
+" Reformat an X.509 certificate
+map <leader>ce :s/\v(.{64})/\1\r/g<CR>
+
+" Super tab scroll from top
+let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:SuperTabContextDefaultCompletionType =  "<c-n>"
+
+" Autocomplete
+setlocal omnifunc=syntaxcomplete#Complete
+set dict+=~/.config/nvim/dict.txt
+set complete+=k
+
+" Set tabs
+set expandtab  " Expands tabs to spaces
+set sw=4 ts=4 sts=4
+:command Tab2 set sw=2 ts=2 sts=2
+:command Tab4 set sw=4 ts=4 sts=4
+map <leader>2 :Tab2<CR>
+map <leader>4 :Tab4<CR>
+
+" Misc commands
+map <leader>t :tabe<CR>
+map <leader>gb :Git blame<CR>
+map <leader>w :w<CR>
+
+" Spellcheck for code
+map <leader>sp :syn off<CR>:set spell<CR>
+map <leader>spx :syn on<CR>:set nospell<CR>
+
+" Add to zshrc
+" export FZF_DEFAULT_OPTS="--preview 'bat --style=numbers --color=always --line-range :500 {}'"
+map <leader>ff :FZF<CR>
+command! -nargs=? -complete=file -nargs=? Rr call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case -- ".shellescape(<q-args>), 1, fzf#vim#with_preview(), <bang>0)
+map <leader>rr :Rr <C-R><C-W><CR>
+
+" Show filename at bottom
+set modeline
+set ls=2
+
+" Show column number in status bar
+set ruler
+
+" Get rid of pipes in split dividers
+:set fillchars+=vert:\ 
+
+" Turn off split with documentation in complete
+:set completeopt-=preview
+
+" Show line numbers
+set nu
+
+" Start searching for term as it's typed
+set incsearch
+
+" Turn off annoying beeps and replace with flash on the screen
+set vb t_vb=
+
+" Highlight all matches of a search
+set hlsearch
+
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc
+
+" Set word wrap to break and word boundaries
+set wrap linebreak nolist
+
+" Spell check
+set nospell
+
+" Show end-of-line characters
+set list
+
+" Blinking cursor
+set guicursor=a:blinkon100
+"set guicursor=
+
+" Set up development environment
+map <leader>st <leader>vs<leader>ba<Esc><Esc><leader>hs<leader>hs
+map <leader>gen <leader>vs<leader>ba 
+
+" Terminal mode with my zshrc
+map <leader>ba :terminal<CR>:set nonu<CR>:set nospell<CR>:setlocal statusline=%=%-14.(%l,%c%V%)<CR><Esc><Esc>a<CR>source ~/.zshrc<CR>clear<CR><Esc><Esc>
+
+" Get out of terminal
+tnoremap <Esc><Esc> <C-\><C-n>
+
+" Foldsearch for class and def
+map <leader>fc :Fp class\\|  def\\|^def<CR>
+
+" Buffers and splits
+map <C-J> <C-W>j
+map <C-K> <C-W>k
+map <C-H> <C-W>h
+map <C-L> <C-W>l
+nnoremap <C-N> :bnext<CR>
+nnoremap <C-P> :bprev<CR>
+map <leader>bu :call BufferList()<CR>
+map <leader>bl :call BufferList()<CR>
+map <leader>x <C-j>:q<CR>
+map <leader>q <C-k>:q<CR>
+map <leader>mx <C-W>_
+map <leader>eq <C-W>=
+map <leader>hs :split<CR><leader>ba<Esc><Esc>
+map <leader>new :split<CR><C-J>:enew<CR>
+map <leader>vs :vsplit<CR>
+map <leader>lo :lopen<CR>
+set hidden
+set wmh=0
+set notbs  " gets rid of error message about tags not being sorted
+
+" Copy to regular clipboard
+map <leader>c "+y<CR>
+
+" Paste form regular clipboard
+map <leader>p "+p<CR>
+
+" Open URL under cursor in browser
+map <leader>gx :!/usr/bin/open <cWORD><CR>
+
+" ============================
+" Start GitHub
+" ============================
+
+function! s:remoteurl()
+    " remote.origin.url will be one of these formats
+    " https://github.com/duane9/printbreakpoint.git
+    " git@github.com:duane9/printbreakpoint.git
+    let url = system("cd " . resolve(expand("%:p:h")) . "; "  . "git config --get remote.origin.url")
+    if stridx(url, '@') != -1
+        return url[15:-6]
+    endif
+    return url[19:-6]
+endfunction
+
+function! s:giturl(branch)
+    let repo = system("cd " . resolve(expand("%:p:h")) . "; " . "git rev-parse --show-toplevel")
+    let dirname = system("basename " . repo[:-2])[:-2]
+    let pathlist = split(expand("%:p:h"), dirname)
+    let filename = "/" . split(expand("%"), "/")[-1]
+    if len(pathlist) > 1
+        let filename = pathlist[-1] . filename
+    endif
+    return '"https://github.com/' . s:remoteurl() . "/blob/" . a:branch  . filename . "\\#L" . line('.') . '"'
+endfunction
+
+" Open current file on GitHub
+command! GitHub silent exec '!/usr/bin/open ' . s:giturl(system("cd " . resolve(expand("%:p:h")) . "; " . "git branch --show-current")[:-2])
+map <leader>gh :GitHub<CR>
+
+" Open current file on GitHub on main
+command! GitHubMain silent exec '!/usr/bin/open ' . s:giturl('main')
+map <leader>gma :GitHubMain<CR>
+
+" ============================
+" End GitHub
+" ============================
