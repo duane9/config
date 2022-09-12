@@ -46,7 +46,7 @@ filetype plugin on
 filetype indent on
 syntax on
 
-let g:python3_host_prog = '/Users/duanehilton/.pyenv/versions/3.9.11/bin/python'
+let g:python3_host_prog = '/usr/bin/python3'
 
 " Color scheme settings
 set t_Co=257
@@ -54,6 +54,10 @@ set t_Co=257
 colorscheme jellybeans
 set background=dark
 set conceallevel=0
+
+" copilot
+imap <silent><script><expr> <C-j> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
 
 "ale linter
 let g:ale_linters = {'javascript': ['eslint'], 'python': ['flake8', 'pylint', 'pyright']}
