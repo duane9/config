@@ -84,7 +84,8 @@ set statusline +=%=%-14.(%l,%c%V%)  " Line, column-virtual column"
 hi StatusLine ctermbg=gray ctermfg=black
 
 " trace debugging
-map <leader>ps i    import pysnooper<CR>@pysnooper.snoop()<CR><Esc>
+map <leader>ps i    from pb import pysnooper<CR>@pysnooper.snoop()<CR><Esc>
+map <leader>pb i    from pb.printbreakpoint import pb; pb()<Esc>
 
 " Reformat an X.509 certificate
 map <leader>ce :s/\v(.{64})/\1\r/g<CR>
