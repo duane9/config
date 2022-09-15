@@ -18,6 +18,7 @@ Plug 'dense-analysis/ale'
 Plug 'prettier/vim-prettier'
 
 " Everything else
+Plug 'ruanyl/vim-gh-line'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'duane9/nvim-rg'
@@ -102,8 +103,10 @@ set expandtab  " Expands tabs to spaces
 set sw=4 ts=4 sts=4
 :command Tab2 set sw=2 ts=2 sts=2
 :command Tab4 set sw=4 ts=4 sts=4
+:command TabTab set noet ci pi sts=0 sw=4 ts=4
 map <leader>2 :Tab2<CR>
 map <leader>4 :Tab4<CR>
+map <leader>tt :TabTab<CR>
 
 " Misc commands
 map <leader>t :tabe<CR>
@@ -202,41 +205,3 @@ map <leader>p "+p<CR>
 
 " Open URL under cursor in browser
 map <leader>gx :!/usr/bin/open <cWORD><CR>
-
-" ============================
-" Start GitHub
-" ============================
-
-function! s:remoteurl()
-    " remote.origin.url will be one of these formats
-    " https://github.com/duane9/printbreakpoint.git
-    " git@github.com:duane9/printbreakpoint.git
-    let url = system("cd " . resolve(expand("%:p:h")) . "; "  . "git config --get remote.origin.url")
-    if stridx(url, '@') != -1
-        return url[15:-6]
-    endif
-    return url[19:-6]
-endfunction
-
-function! s:giturl(branch)
-    let repo = system("cd " . resolve(expand("%:p:h")) . "; " . "git rev-parse --show-toplevel")
-    let dirname = system("basename " . repo[:-2])[:-2]
-    let pathlist = split(expand("%:p:h"), dirname)
-    let filename = "/" . split(expand("%"), "/")[-1]
-    if len(pathlist) > 1
-        let filename = pathlist[-1] . filename
-    endif
-    return '"https://github.com/' . s:remoteurl() . "/blob/" . a:branch  . filename . "\\#L" . line('.') . '"'
-endfunction
-
-" Open current file on GitHub
-command! GitHub silent exec '!/usr/bin/open ' . s:giturl(system("cd " . resolve(expand("%:p:h")) . "; " . "git branch --show-current")[:-2])
-map <leader>gh :GitHub<CR>
-
-" Open current file on GitHub on main
-command! GitHubMain silent exec '!/usr/bin/open ' . s:giturl('main')
-map <leader>gma :GitHubMain<CR>
-
-" ============================
-" End GitHub
-" ============================
