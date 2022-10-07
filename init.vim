@@ -102,8 +102,8 @@ set complete+=k
 " Set tabs
 set expandtab  " Expands tabs to spaces
 set sw=4 ts=4 sts=4
-:command Tab2 set sw=2 ts=2 sts=2
-:command Tab4 set sw=4 ts=4 sts=4
+:command Tab2 set expandtab sw=2 ts=2 sts=2
+:command Tab4 set expandtab sw=4 ts=4 sts=4
 :command TabTab set noet ci pi sts=0 sw=4 ts=4
 map <leader>2 :Tab2<CR>
 map <leader>4 :Tab4<CR>
@@ -111,7 +111,7 @@ map <leader>tt :TabTab<CR>
 
 " Misc commands
 map <leader>t :tabe<CR>
-map <leader>gb :Git blame<CR>
+map <leader>bg :Git blame<CR>
 map <leader>w :w<CR>
 
 " Spellcheck for code
