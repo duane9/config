@@ -81,6 +81,7 @@ set ignorecase
 " Statusline
 set statusline +=\ %F  " Full path to file
 set statusline +=%=%-14.(%l,%c%V%)  " Line, column-virtual column"
+set statusline +=%m
 hi StatusLine ctermbg=gray ctermfg=black
 
 " trace debugging
