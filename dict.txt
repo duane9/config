@@ -71,6 +71,7 @@ do
 double
 else
 enum
+enumerate
 eval
 export
 extends
