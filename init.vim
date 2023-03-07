@@ -57,7 +57,7 @@ set background=dark
 set conceallevel=0
 
 " copilot
-imap <silent><script><expr> <C-j> copilot#Accept("\<CR>")
+imap <silent><script><expr> <C-f> copilot#Accept("\<CR>")
 let g:copilot_no_tab_map = v:true
 
 "ale linter
