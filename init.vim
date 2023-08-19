@@ -18,7 +18,6 @@ Plug 'dense-analysis/ale'
 Plug 'prettier/vim-prettier'
 
 " Everything else
-Plug 'wellle/context.vim'
 Plug 'ruanyl/vim-gh-line'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
