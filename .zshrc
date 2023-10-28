@@ -2,7 +2,7 @@
 
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="avit"
-plugins=(zsh-autosuggestions gh)
+plugins=(zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 export ZSH_AUTOSUGGEST_HISTORY_IGNORE="cd *"
 
@@ -15,6 +15,10 @@ getbranch () {
 
 ggl () {
     git pull origin $(getbranch)
+}
+
+gh () {
+    open https://github.$(git config remote.origin.url | cut -f2 -d. | tr ':' /)
 }
 
 alias count="ls -1 | wc -l" # count files in current directory
