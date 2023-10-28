@@ -35,7 +35,7 @@ Plug 'ap/vim-css-color'
 Plug 'Townk/vim-autoclose'
 Plug 'airblade/vim-gitgutter'
 Plug 'plasticboy/vim-markdown'
-Plug 'spaceinvader9/jellybeans.vim'
+Plug 'duane9/jellybeans.vim'
 Plug 'reedes/vim-pencil'
 call plug#end()
 
