@@ -63,6 +63,9 @@ let g:copilot_no_tab_map = v:true
 "ale linter
 let g:ale_linters = {'javascript': ['eslint'], 'python': ['flake8', 'pylint', 'pyright']}
 
+" autoclose
+let g:AutoClosePairs_add = "%"
+
 " bufferlist colors
 hi BufferSelected term=reverse ctermfg=black ctermbg=white cterm=bold
 hi BufferNormal term=NONE ctermfg=white ctermbg=black cterm=NONE
