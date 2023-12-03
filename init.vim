@@ -32,11 +32,10 @@ Plug 'osyo-manga/vim-anzu/'
 Plug 'ervandew/supertab'
 Plug 'gregsexton/MatchTag'
 Plug 'ap/vim-css-color'
-Plug 'Townk/vim-autoclose'
+Plug 'm4xshen/autoclose.nvim'
 Plug 'airblade/vim-gitgutter'
 Plug 'plasticboy/vim-markdown'
 Plug 'duane9/jellybeans.vim'
-Plug 'reedes/vim-pencil'
 call plug#end()
 
 " ============================
@@ -46,6 +45,8 @@ call plug#end()
 filetype plugin on
 filetype indent on
 syntax on
+
+lua require('config')
 
 let g:python3_host_prog = '/usr/bin/python3'
 
