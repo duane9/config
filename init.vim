@@ -16,6 +16,9 @@ Plug 'github/copilot.vim'
 Plug 'davidhalter/jedi-vim', {'dir': '~/.config/nvim/plugged/jedi-vim', 'do': 'git submodule update --init --recursive'}
 Plug 'dense-analysis/ale'
 Plug 'prettier/vim-prettier'
+Plug 'alvan/vim-closetag'
+Plug 'Townk/vim-autoclose'
+Plug 'tpope/vim-endwise'
 
 " Everything else
 Plug 'ruanyl/vim-gh-line'
@@ -30,9 +33,8 @@ Plug 'embear/vim-foldsearch'
 Plug 'roblillack/vim-bufferlist'
 Plug 'osyo-manga/vim-anzu/'
 Plug 'ervandew/supertab'
-Plug 'gregsexton/MatchTag'
+Plug 'leafOfTree/vim-matchtag'
 Plug 'ap/vim-css-color'
-Plug 'm4xshen/autoclose.nvim'
 Plug 'airblade/vim-gitgutter'
 Plug 'plasticboy/vim-markdown'
 Plug 'duane9/jellybeans.vim'
@@ -46,9 +48,9 @@ filetype plugin on
 filetype indent on
 syntax on
 
-lua require('config')
-
 let g:python3_host_prog = '/usr/bin/python3'
+
+au BufNewFile,BufRead *.html set filetype=htmldjango
 
 " Color scheme settings
 set t_Co=257
