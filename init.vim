@@ -52,6 +52,7 @@ filetype indent on
 syntax on
 
 let g:python3_host_prog = '/usr/bin/python3'
+let g:ale_python_flake8_options = '--max-line-length=120'
 
 au BufNewFile,BufRead *.html set filetype=htmldjango
 let g:rg_command = 'rg --smart-case --vimgrep'
@@ -88,8 +89,6 @@ let mapleader = ","
 
 " Markdown settings
 " set tw=64
-let g:pencil#autoformat = 0
-au BufRead,BufNewFile *.md call pencil#init({'wrap': 'soft', 'autoformat': 1})
 au BufRead,BufNewFile *.md setlocal conceallevel=2
 let g:vim_markdown_folding_disabled = 1
 
@@ -98,9 +97,6 @@ set statusline +=\ %F  " Full path to file
 set statusline +=%=%-14.(%l,%c%V%)  " Line, column-virtual column"
 set statusline +=%m
 hi StatusLine ctermbg=gray ctermfg=black
-
-" trace debugging
-map <leader>ps i    import pysnooper<CR>@pysnooper.snoop()<CR><Esc>
 
 " Reformat an X.509 certificate
 map <leader>ce :s/\v(.{64})/\1\r/g<CR>
