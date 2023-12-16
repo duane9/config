@@ -92,7 +92,6 @@ let g:pencil#autoformat = 0
 au BufRead,BufNewFile *.md call pencil#init({'wrap': 'soft', 'autoformat': 1})
 au BufRead,BufNewFile *.md setlocal conceallevel=2
 let g:vim_markdown_folding_disabled = 1
-set ignorecase
 
 " Statusline
 set statusline +=\ %F  " Full path to file
@@ -157,6 +156,8 @@ set ruler
 set nu
 
 " Start searching for term as it's typed
+set ignorecase
+set smartcase
 set incsearch
 
 " Turn off annoying beeps and replace with flash on the screen
