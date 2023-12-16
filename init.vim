@@ -5,9 +5,9 @@
 " nvim
 " :PlugInstall
 
-" ============================
-" Start vim-plug
-" ============================
+" ========================================
+" Plugins
+" ========================================
 
 call plug#begin('~/.config/nvim/plugged')
 
@@ -25,6 +25,7 @@ Plug 'ruanyl/vim-gh-line'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'duane9/nvim-rg'
+Plug 'duane9/jellybeans.vim'
 Plug 'alec-gibson/nvim-tetris'
 Plug 'stefandtw/quickfix-reflector.vim'
 Plug 'tpope/vim-commentary'
@@ -37,12 +38,14 @@ Plug 'leafOfTree/vim-matchtag'
 Plug 'ap/vim-css-color'
 Plug 'airblade/vim-gitgutter'
 Plug 'plasticboy/vim-markdown'
-Plug 'duane9/jellybeans.vim'
+Plug 'MattesGroeger/vim-bookmarks'
+Plug 'pocco81/auto-save.nvim'
+
 call plug#end()
 
-" ============================
-" End vim-plug
-" ============================
+" ========================================
+" Settings
+" ========================================
 
 filetype plugin on
 filetype indent on
@@ -51,6 +54,7 @@ syntax on
 let g:python3_host_prog = '/usr/bin/python3'
 
 au BufNewFile,BufRead *.html set filetype=htmldjango
+let g:rg_command = 'rg --smart-case --vimgrep'
 
 " Color scheme settings
 set t_Co=257
@@ -59,15 +63,21 @@ colorscheme jellybeans
 set background=dark
 set conceallevel=0
 
+set mouse=a
+set noswapfile
+
 " copilot
 imap <silent><script><expr> <C-f> copilot#Accept("\<CR>")
 let g:copilot_no_tab_map = v:true
+"ALT-]
+inoremap ‘ <Plug>(copilot-next)
+"ALT-[
+inoremap “ <Plug>(copilot-previous)
+"ALT-\
+inoremap « <Plug>(copilot-suggest)
 
 "ale linter
 let g:ale_linters = {'javascript': ['eslint'], 'python': ['flake8', 'pylint', 'pyright']}
-
-" autoclose
-let g:AutoClosePairs_add = "%"
 
 " bufferlist colors
 hi BufferSelected term=reverse ctermfg=black ctermbg=white cterm=bold
@@ -91,8 +101,7 @@ set statusline +=%m
 hi StatusLine ctermbg=gray ctermfg=black
 
 " trace debugging
-map <leader>ps i    from pb import pysnooper<CR>@pysnooper.snoop()<CR><Esc>
-map <leader>pb i    from pb.printbreakpoint import pb; pb()<Esc>
+map <leader>ps i    import pysnooper<CR>@pysnooper.snoop()<CR><Esc>
 
 " Reformat an X.509 certificate
 map <leader>ce :s/\v(.{64})/\1\r/g<CR>
@@ -176,7 +185,7 @@ map <leader>st <leader>vs<leader>ba<Esc><Esc><leader>hs<leader>hs
 map <leader>gen <leader>vs<leader>ba 
 
 " Terminal mode with my zshrc
-map <leader>ba :terminal<CR>:set nonu<CR>:set nospell<CR>:setlocal statusline=%=%-14.(%l,%c%V%)<CR><Esc><Esc>a<CR>source ~/.zshrc<CR>clear<CR><Esc><Esc>
+map <leader>ba :terminal<CR>:set nonu<CR>:set nospell<CR>:setlocal statusline=%=%-14.(%l,%c%V%)<CR><Esc><Esc>
 
 " Get out of terminal
 tnoremap <Esc><Esc> <C-\><C-n>
@@ -213,3 +222,11 @@ map <leader>p "+p<CR>
 
 " Open URL under cursor in browser
 map <leader>gx :!/usr/bin/open <cWORD><CR>
+
+" ========================================
+" Lua settings
+" ========================================
+
+lua << EOF
+    require("auto-save").setup()
+EOF
