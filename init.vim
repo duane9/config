@@ -60,25 +60,24 @@ let g:rg_command = 'rg --smart-case --vimgrep'
 
 " Color scheme settings
 set t_Co=257
-" colorscheme onedark
 colorscheme jellybeans
 set background=dark
 set conceallevel=0
 
-set mouse=a
+set mouse=i
 set noswapfile
 
 " copilot
-imap <silent><script><expr> <C-f> copilot#Accept("\<CR>")
+imap <silent><script><expr> <C-f> copilot#Accept('\<CR>')
 let g:copilot_no_tab_map = v:true
-"ALT-]
+" ALT-]
 inoremap ‘ <Plug>(copilot-next)
-"ALT-[
+" ALT-[
 inoremap “ <Plug>(copilot-previous)
-"ALT-\
+" ALT-\
 inoremap « <Plug>(copilot-suggest)
 
-"ale linter
+" ale linter
 let g:ale_linters = {'javascript': ['eslint'], 'python': ['flake8', 'pylint', 'pyright']}
 
 " bufferlist colors
@@ -86,7 +85,7 @@ hi BufferSelected term=reverse ctermfg=black ctermbg=white cterm=bold
 hi BufferNormal term=NONE ctermfg=white ctermbg=black cterm=NONE
 
 " Change leader from default \ to ,
-let mapleader = ","
+let mapleader = ','
 
 " Markdown settings
 " set tw=64
@@ -95,7 +94,7 @@ let g:vim_markdown_folding_disabled = 1
 
 " Statusline
 set statusline +=\ %F  " Full path to file
-set statusline +=%=%-14.(%l,%c%V%)  " Line, column-virtual column"
+set statusline +=%=%-14.(%l,%c%V%)  " Line, column-virtual column
 set statusline +=%m
 hi StatusLine ctermbg=gray ctermfg=black
 
@@ -130,8 +129,6 @@ map <leader>w :w<CR>
 map <leader>sp :syn off<CR>:set spell<CR>
 map <leader>spx :syn on<CR>:set nospell<CR>
 
-" Add to zshrc
-" export FZF_DEFAULT_OPTS="--preview 'bat --style=numbers --color=always --line-range :500 {}'"
 map <leader>ff :FZF<CR>
 command! -nargs=? -complete=file -nargs=? Rr call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case -- ".shellescape(<q-args>), 1, fzf#vim#with_preview(), <bang>0)
 map <leader>rr :Rr <C-R><C-W><CR>
