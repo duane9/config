@@ -59,13 +59,17 @@ au BufNewFile,BufRead *.html set filetype=htmldjango
 let g:rg_command = 'rg --smart-case --vimgrep'
 
 " Color scheme settings
-set t_Co=257
 colorscheme jellybeans
 set background=dark
 set conceallevel=0
 
 set mouse=i
+
+" We're using auto-save, so turn off swap files
 set noswapfile
+
+" Don't automatically close quotation marks
+let g:AutoClosePairs_del = "\" '"
 
 " copilot
 imap <silent><script><expr> <C-f> copilot#Accept('\<CR>')
