@@ -17,7 +17,7 @@ Plug 'davidhalter/jedi-vim', {'dir': '~/.config/nvim/plugged/jedi-vim', 'do': 'g
 Plug 'dense-analysis/ale'
 Plug 'prettier/vim-prettier'
 Plug 'alvan/vim-closetag'
-Plug 'Townk/vim-autoclose'
+" Plug 'Townk/vim-autoclose'
 Plug 'tpope/vim-endwise'
 
 " Everything else
@@ -37,7 +37,7 @@ Plug 'osyo-manga/vim-anzu/'
 Plug 'ervandew/supertab'
 Plug 'leafOfTree/vim-matchtag'
 Plug 'ap/vim-css-color'
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 Plug 'plasticboy/vim-markdown'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'pocco81/auto-save.nvim'

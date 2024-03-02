@@ -22,6 +22,8 @@ gh () {
 }
 
 alias count="ls -1 | wc -l" # count files in current directory
+alias gcc="git commit -m '.'"
+alias gad="git add ."
 alias ggp="git push origin HEAD"
 alias gap="git add -p"
 alias gsh="git show"
