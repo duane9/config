@@ -54,6 +54,9 @@ syntax on
 
 let g:python3_host_prog = '/usr/bin/python3'
 let g:ale_python_flake8_options = '--max-line-length=120'
+let g:ale_virtualtext_cursor = 'disabled'
+let g:ale_sign_column_always = 1
+let g:ale_use_neovim_diagnostics_api = 1
 
 au BufNewFile,BufRead *.html set filetype=htmldjango
 let g:rg_command = 'rg --smart-case --vimgrep'
