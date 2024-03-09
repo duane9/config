@@ -54,10 +54,6 @@ filetype indent on
 syntax on
 
 let g:python3_host_prog = '/usr/bin/python3'
-let g:ale_python_flake8_options = '--max-line-length=120'
-let g:ale_virtualtext_cursor = 'disabled'
-let g:ale_sign_column_always = 1
-let g:ale_use_neovim_diagnostics_api = 1
 
 au BufNewFile,BufRead *.html set filetype=htmldjango
 let g:rg_command = 'rg --smart-case --vimgrep'
@@ -75,6 +71,9 @@ set noswapfile
 " Don't automatically close quotation marks
 let g:AutoClosePairs_del = "\" '"
 
+" context.vim
+let g:context_enabled = 0
+
 " copilot
 imap <silent><script><expr> <C-f> copilot#Accept('\<CR>')
 let g:copilot_no_tab_map = v:true
@@ -87,6 +86,10 @@ inoremap « <Plug>(copilot-suggest)
 
 " ale linter
 let g:ale_linters = {'javascript': ['eslint'], 'python': ['flake8', 'pylint', 'pyright']}
+let g:ale_python_flake8_options = '--max-line-length=120'
+let g:ale_virtualtext_cursor = 'disabled'
+let g:ale_sign_column_always = 1
+let g:ale_use_neovim_diagnostics_api = 1
 
 " bufferlist colors
 hi BufferSelected term=reverse ctermfg=black ctermbg=white cterm=bold
