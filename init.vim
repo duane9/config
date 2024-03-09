@@ -21,6 +21,7 @@ Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-endwise'
 
 " Everything else
+Plug 'wellle/context.vim'
 Plug 'ruanyl/vim-gh-line'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
