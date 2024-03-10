@@ -1,6 +1,6 @@
 " brew install fzf fd nvim ripgrep bat pyright pylint flake8
 " Put this file in ~/.config/nvim/init.vim
-" Install vim-plug: curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+" Install vim-plug
 " pip3 install pynvim
 " nvim
 " :PlugInstall
@@ -9,7 +9,7 @@
 " Plugins
 " ========================================
 
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin('~/.config/vim/plugged')
 
 " Linters and autocomplete
 Plug 'github/copilot.vim'
@@ -17,7 +17,6 @@ Plug 'davidhalter/jedi-vim', {'dir': '~/.config/nvim/plugged/jedi-vim', 'do': 'g
 Plug 'dense-analysis/ale'
 Plug 'prettier/vim-prettier'
 Plug 'alvan/vim-closetag'
-" Plug 'Townk/vim-autoclose'
 Plug 'tpope/vim-endwise'
 
 " Everything else
@@ -38,10 +37,9 @@ Plug 'osyo-manga/vim-anzu/'
 Plug 'ervandew/supertab'
 Plug 'leafOfTree/vim-matchtag'
 Plug 'ap/vim-css-color'
-" Plug 'airblade/vim-gitgutter'
 Plug 'plasticboy/vim-markdown'
 Plug 'MattesGroeger/vim-bookmarks'
-Plug 'pocco81/auto-save.nvim'
+Plug '907th/vim-auto-save'
 
 call plug#end()
 
@@ -49,21 +47,19 @@ call plug#end()
 " Settings
 " ========================================
 
+set nocompatible
 filetype plugin on
 filetype indent on
 syntax on
 
-let g:python3_host_prog = '/usr/bin/python3'
-
-au BufNewFile,BufRead *.html set filetype=htmldjango
 let g:rg_command = 'rg --smart-case --vimgrep'
+let g:auto_save = 1
+set listchars=tab:>-,trail:_
 
 " Color scheme settings
 colorscheme jellybeans
 set background=dark
 set conceallevel=0
-
-set mouse=i
 
 " We're using auto-save, so turn off swap files
 set noswapfile
@@ -89,7 +85,6 @@ let g:ale_linters = {'javascript': ['eslint'], 'python': ['flake8', 'pylint', 'p
 let g:ale_python_flake8_options = '--max-line-length=120'
 let g:ale_virtualtext_cursor = 'disabled'
 let g:ale_sign_column_always = 1
-let g:ale_use_neovim_diagnostics_api = 1
 let g:ale_enabled = 0
 
 " bufferlist colors
@@ -109,6 +104,9 @@ set statusline +=\ %F  " Full path to file
 set statusline +=%=%-14.(%l,%c%V%)  " Line, column-virtual column
 set statusline +=%m
 hi StatusLine ctermbg=gray ctermfg=black
+hi StatusLineNC ctermbg=black ctermfg=gray
+hi StatusLineTerm ctermbg=gray ctermfg=black
+hi StatusLineTermNC ctermbg=black ctermfg=gray
 
 " Reformat an X.509 certificate
 map <leader>ce :s/\v(.{64})/\1\r/g<CR>
@@ -119,7 +117,7 @@ let g:SuperTabContextDefaultCompletionType =  "<c-n>"
 
 " Autocomplete
 setlocal omnifunc=syntaxcomplete#Complete
-set dict+=~/.config/nvim/dict.txt
+set dict+=~/.config/vim/dict.txt
 set complete+=k
 
 " Set tabs
@@ -183,16 +181,10 @@ set nospell
 " Show end-of-line characters
 set list
 
-" Blinking cursor
-set guicursor=a:blinkon100
-"set guicursor=
-
-" Set up development environment
-map <leader>st <leader>vs<leader>ba<Esc><Esc><leader>hs<leader>hs
-map <leader>gen <leader>vs<leader>ba 
-
 " Terminal mode
-map <leader>ba :terminal<CR>:set nonu<CR>:set nospell<CR>:setlocal statusline=%=%-14.(%l,%c%V%)<CR><Esc><Esc>
+map <leader>ba :terminal<CR><Esc><Esc>:set nolist<CR>:set nonu<CR>:set nospell<CR><Esc>
+map <leader>gen :vertical terminal<CR><Esc><Esc>:set nolist<CR>:set nonu<CR>:set nospell<CR><Esc>a
+map <leader>st <leader>gen<Esc><Esc><leader>ba<Esc><Esc><leader>ba<Esc>a<C-J>a<Esc><C-J>a<Esc>
 
 " Get out of terminal
 tnoremap <Esc><Esc> <C-\><C-n>
@@ -201,6 +193,12 @@ tnoremap <Esc><Esc> <C-\><C-n>
 map <leader>fc :Fp class\\|  def\\|^def<CR>
 
 " Buffers and splits
+tnoremap <C-J> <C-W>j
+tnoremap <C-K> <C-W>k
+tnoremap <C-H> <C-W>h
+tnoremap <C-L> <C-W>l
+tnoremap <C-U> <C-K>
+tnoremap <C-N> <C-J>
 map <C-J> <C-W>j
 map <C-K> <C-W>k
 map <C-H> <C-W>h
@@ -219,7 +217,6 @@ map <leader>vs :vsplit<CR>
 map <leader>lo :lopen<CR>
 set hidden
 set wmh=0
-set notbs  " gets rid of error message about tags not being sorted
 
 " Copy to regular clipboard
 map <leader>c "+y<CR>
@@ -229,11 +226,3 @@ map <leader>p "+p<CR>
 
 " Open URL under cursor in browser
 map <leader>gx :!/usr/bin/open <cWORD><CR>
-
-" ========================================
-" Lua settings
-" ========================================
-
-lua << EOF
-    require("auto-save").setup()
-EOF
