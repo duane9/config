@@ -211,7 +211,7 @@ map <leader>x <C-j>:q<CR>
 map <leader>q <C-k>:q<CR>
 map <leader>mx <C-W>_
 map <leader>eq <C-W>=
-map <leader>hs :split<CR><leader>ba<Esc><Esc>
+map <leader>hs <leader>baa
 map <leader>new :split<CR><C-J>:enew<CR>
 map <leader>vs :vsplit<CR>
 map <leader>lo :lopen<CR>
