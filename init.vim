@@ -1,6 +1,6 @@
 " brew install fzf fd nvim ripgrep bat pyright pylint flake8
 " Put this file in ~/.config/nvim/init.vim
-" Install vim-plug: curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+" Install vim-plug
 " pip3 install pynvim
 " nvim
 " :PlugInstall
@@ -83,6 +83,9 @@ inoremap ‘ <Plug>(copilot-next)
 inoremap “ <Plug>(copilot-previous)
 " ALT-\
 inoremap « <Plug>(copilot-suggest)
+
+" jedi-vim
+let g:jedi#popup_on_dot = 0
 
 " ale linter
 let g:ale_linters = {'javascript': ['eslint'], 'python': ['flake8', 'pylint', 'pyright']}
