@@ -56,7 +56,6 @@ syntax on
 let g:python3_host_prog = '/usr/bin/python3'
 
 au BufNewFile,BufRead *.html set filetype=htmldjango
-let g:rg_command = 'rg --smart-case --vimgrep'
 
 " Color scheme settings
 colorscheme jellybeans
@@ -70,6 +69,9 @@ set noswapfile
 
 " Don't automatically close quotation marks
 let g:AutoClosePairs_del = "\" '"
+
+" nvim-rg
+let g:rg_command = 'rg --smart-case --vimgrep'
 
 " context.vim
 let g:context_enabled = 0
