@@ -28,8 +28,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'duane9/nvim-rg'
 Plug 'duane9/jellybeans.vim'
 Plug 'alec-gibson/nvim-tetris'
-" Turn off auto save when using quickfix reflector
-" Plug 'stefandtw/quickfix-reflector.vim'
+Plug 'stefandtw/quickfix-reflector.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'embear/vim-foldsearch'
@@ -66,6 +65,11 @@ set mouse=i
 
 " We're using auto-save, so turn off swap files
 set noswapfile
+
+" Quickfix reflector
+let g:qf_modifiable = 0
+map <leader>qt :let g:qf_modifiable = 1<CR>:ASToggle<CR>
+map <leader>noqt :let g:qf_modifiable = 0<CR>:ASToggle<CR>
 
 " Don't automatically close quotation marks
 let g:AutoClosePairs_del = "\" '"
