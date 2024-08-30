@@ -68,8 +68,8 @@ set noswapfile
 
 " Quickfix reflector
 let g:qf_modifiable = 0
-map <leader>qt :let g:qf_modifiable = 1<CR>:ASToggle<CR>
-map <leader>noqt :let g:qf_modifiable = 0<CR>:ASToggle<CR>
+map <leader>qf :let g:qf_modifiable = 1<CR>:ASToggle<CR>
+map <leader>noqf :let g:qf_modifiable = 0<CR>:ASToggle<CR>
 
 " Don't automatically close quotation marks
 let g:AutoClosePairs_del = "\" '"
