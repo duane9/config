@@ -25,8 +25,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'duane9/nvim-rg'
 Plug 'duane9/jellybeans.vim'
 Plug 'alec-gibson/nvim-tetris'
-" Turn off auto save when using quickfix reflector
-" Plug 'stefandtw/quickfix-reflector.vim'
+Plug 'stefandtw/quickfix-reflector.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'embear/vim-foldsearch'
@@ -37,7 +36,6 @@ Plug 'leafOfTree/vim-matchtag'
 Plug 'ap/vim-css-color'
 Plug 'plasticboy/vim-markdown'
 Plug 'MattesGroeger/vim-bookmarks'
-Plug '907th/vim-auto-save'
 
 call plug#end()
 
