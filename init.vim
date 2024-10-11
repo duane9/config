@@ -40,6 +40,7 @@ Plug 'ap/vim-css-color'
 Plug 'plasticboy/vim-markdown'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'pocco81/auto-save.nvim'
+Plug 'gabrielpoca/replacer.nvim'
 
 call plug#end()
 
@@ -70,6 +71,9 @@ let g:AutoClosePairs_del = "\" '"
 
 " nvim-rg
 let g:rg_command = 'rg --smart-case --vimgrep'
+
+" replacer
+nmap <leader>rep :lua require("replacer").run()<cr>
 
 " context.vim
 let g:context_enabled = 0
