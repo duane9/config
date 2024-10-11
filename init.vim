@@ -39,7 +39,7 @@ Plug 'ap/vim-css-color'
 " Plug 'airblade/vim-gitgutter'
 Plug 'plasticboy/vim-markdown'
 Plug 'MattesGroeger/vim-bookmarks'
-Plug 'pocco81/auto-save.nvim'
+" Plug 'pocco81/auto-save.nvim'
 Plug 'gabrielpoca/replacer.nvim'
 
 call plug#end()
@@ -241,6 +241,6 @@ map <leader>gx :!/usr/bin/open <cWORD><CR>
 " Lua settings
 " ========================================
 
-lua << EOF
-    require("auto-save").setup()
-EOF
+" lua << EOF
+"     require("auto-save").setup()
+" EOF
