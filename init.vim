@@ -16,9 +16,6 @@ Plug 'github/copilot.vim'
 Plug 'davidhalter/jedi-vim', {'dir': '~/.config/nvim/plugged/jedi-vim', 'do': 'git submodule update --init --recursive'}
 Plug 'dense-analysis/ale'
 Plug 'prettier/vim-prettier'
-Plug 'alvan/vim-closetag'
-" Plug 'Townk/vim-autoclose'
-Plug 'tpope/vim-endwise'
 
 " Everything else
 Plug 'wellle/context.vim'
@@ -36,10 +33,8 @@ Plug 'osyo-manga/vim-anzu/'
 Plug 'ervandew/supertab'
 Plug 'leafOfTree/vim-matchtag'
 Plug 'ap/vim-css-color'
-" Plug 'airblade/vim-gitgutter'
 Plug 'plasticboy/vim-markdown'
 Plug 'MattesGroeger/vim-bookmarks'
-" Plug 'pocco81/auto-save.nvim'
 Plug 'gabrielpoca/replacer.nvim'
 
 call plug#end()

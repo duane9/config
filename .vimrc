@@ -14,8 +14,6 @@ Plug 'github/copilot.vim'
 Plug 'davidhalter/jedi-vim', {'dir': '~/.config/nvim/plugged/jedi-vim', 'do': 'git submodule update --init --recursive'}
 Plug 'dense-analysis/ale'
 Plug 'prettier/vim-prettier'
-Plug 'alvan/vim-closetag'
-Plug 'tpope/vim-endwise'
 
 " Everything else
 Plug 'wellle/context.vim'
