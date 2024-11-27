@@ -1,7 +1,7 @@
 " brew install fzf fd nvim ripgrep bat pyright pylint flake8
 " Put this file in ~/.config/nvim/init.vim
 " Install vim-plug
-" pip3 install pynvim
+" pip3 install pynvim mdformat black
 " nvim
 " :PlugInstall
 
@@ -231,6 +231,17 @@ map <leader>p "+p<CR>
 
 " Open URL under cursor in browser
 map <leader>gx :!/usr/bin/open <cWORD><CR>
+
+" markdown formatting
+map <leader>md :w<CR>:silent !/usr/local/bin/mdformat '%:p' --wrap=80<CR>:e!<CR>
+
+" Black formatting
+function! Black()
+  if expand('%:e') == 'py'
+    execute '!/usr/local/bin/black ' . shellescape(expand('%:p'))
+  endif
+endfunction
+map <leader>w :w<CR>:call Black()<CR>:e!<CR>:w<CR>
 
 " ========================================
 " Lua settings
