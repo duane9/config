@@ -18,12 +18,12 @@ Plug 'dense-analysis/ale'
 Plug 'prettier/vim-prettier'
 
 " Everything else
+Plug 'shaunsingh/nord.nvim'
 Plug 'wellle/context.vim'
 Plug 'ruanyl/vim-gh-line'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'duane9/nvim-rg'
-Plug 'duane9/jellybeans.vim'
 Plug 'alec-gibson/nvim-tetris'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -36,6 +36,18 @@ Plug 'ap/vim-css-color'
 Plug 'plasticboy/vim-markdown'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'gabrielpoca/replacer.nvim'
+
+" Avante
+" Deps
+Plug 'stevearc/dressing.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'MunifTanjim/nui.nvim'
+
+" Optional deps
+Plug 'hrsh7th/nvim-cmp'
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'HakonHarnes/img-clip.nvim'
+Plug 'zbirenbaum/copilot.lua'
 
 call plug#end()
 
@@ -52,7 +64,7 @@ let g:python3_host_prog = '/usr/bin/python3'
 au BufNewFile,BufRead *.html set filetype=htmldjango
 
 " Color scheme settings
-colorscheme jellybeans
+colorscheme nord
 set background=dark
 set conceallevel=0
 
@@ -247,6 +259,11 @@ map <leader>w :w<CR>:call Black()<CR>:e!<CR>:w<CR>
 " Lua settings
 " ========================================
 
-" lua << EOF
-"     require("auto-save").setup()
-" EOF
+lua << EOF
+require('avante_lib').load()
+require('avante').setup()
+require('nvim-web-devicons').setup()
+require('render-markdown').setup({
+  file_types = { "markdown", "Avante" },
+})
+EOF
