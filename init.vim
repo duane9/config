@@ -1,4 +1,4 @@
-" brew install fzf fd nvim ripgrep bat pyright pylint flake8
+" brew install fzf fd nvim ripgrep bat pyright pylint flake8 font-hack-nerd-font
 " Put this file in ~/.config/nvim/init.vim
 " Install vim-plug
 " pip3 install pynvim mdformat black
@@ -47,7 +47,7 @@ Plug 'MunifTanjim/nui.nvim'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'HakonHarnes/img-clip.nvim'
-Plug 'zbirenbaum/copilot.lua'
+Plug 'MeanderingProgrammer/render-markdown.nvim'
 
 call plug#end()
 
@@ -200,6 +200,9 @@ set list
 " Blinking cursor
 set guicursor=a:blinkon100
 "set guicursor=
+
+set encoding=UTF-8
+set termguicolors
 
 " Set up development environment
 map <leader>st <leader>vs<leader>ba<Esc><Esc><leader>hs<leader>hs
