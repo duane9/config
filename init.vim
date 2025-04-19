@@ -264,7 +264,11 @@ map <leader>w :w<CR>:call Black()<CR>:e!<CR>:w<CR>
 
 lua << EOF
 require('avante_lib').load()
-require('avante').setup()
+require('avante').setup({
+  claude = {
+    model = "claude-3-7-sonnet-20250219",
+  },
+})
 require('mini.icons').setup()
 require('render-markdown').setup({
   file_types = { "markdown", "Avante" },
