@@ -45,7 +45,7 @@ Plug 'MunifTanjim/nui.nvim'
 
 " Optional deps
 Plug 'hrsh7th/nvim-cmp'
-Plug 'nvim-tree/nvim-web-devicons'
+Plug 'echasnovski/mini.icons'
 Plug 'HakonHarnes/img-clip.nvim'
 Plug 'MeanderingProgrammer/render-markdown.nvim'
 
@@ -265,7 +265,7 @@ map <leader>w :w<CR>:call Black()<CR>:e!<CR>:w<CR>
 lua << EOF
 require('avante_lib').load()
 require('avante').setup()
-require('nvim-web-devicons').setup()
+require('mini.icons').setup()
 require('render-markdown').setup({
   file_types = { "markdown", "Avante" },
 })
