@@ -36,17 +36,7 @@ Plug 'ap/vim-css-color'
 Plug 'plasticboy/vim-markdown'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'gabrielpoca/replacer.nvim'
-
-" Avante
-" Deps
-Plug 'stevearc/dressing.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'MunifTanjim/nui.nvim'
-
-" Optional deps
-Plug 'hrsh7th/nvim-cmp'
 Plug 'echasnovski/mini.icons'
-Plug 'HakonHarnes/img-clip.nvim'
 Plug 'MeanderingProgrammer/render-markdown.nvim'
 
 call plug#end()
@@ -263,14 +253,8 @@ map <leader>w :w<CR>:call Black()<CR>:e!<CR>:w<CR>
 " ========================================
 
 lua << EOF
-require('avante_lib').load()
-require('avante').setup({
-  claude = {
-    model = "claude-3-7-sonnet-20250219",
-  },
-})
 require('mini.icons').setup()
 require('render-markdown').setup({
-  file_types = { "markdown", "Avante" },
+  file_types = { 'markdown', },
 })
 EOF
