@@ -205,7 +205,7 @@ set encoding=UTF-8
 set termguicolors
 
 " Set up development environment
-map <leader>st <leader>vs<leader>ba<Esc><Esc><leader>hs<leader>hs
+map <leader>st <leader>vs<leader>vs<Esc><Esc><C-H><C-H><leader>ba<C-L><C-L><leader>ba<CR>aclaude<CR>
 map <leader>gen <leader>vs<leader>ba 
 
 " Terminal mode
