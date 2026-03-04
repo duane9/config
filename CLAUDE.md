@@ -65,7 +65,6 @@ except SomeException:
 - Use .only()/.defer() for large models
 - Use .exists() instead of if queryset:
 - Use .count() instead of len(queryset)
-- Use .iterator() for large querysets
 
 ### BAD - N+1 queries
 
