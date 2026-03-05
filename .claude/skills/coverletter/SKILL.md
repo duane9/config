@@ -1,6 +1,6 @@
 ---
 name: coverletter
-description: Reads a job description file and a resume file, then generates a tailored cover letter saved as a markdown file.
+description: Reads a job description file and a resume file, then generates a tailored cover letter saved as a txt file.
 ---
 
 You are generating a professional cover letter. Two file paths are provided as arguments: the first is the job description file, the second is the resume file.
@@ -21,6 +21,6 @@ Steps:
    - Closes with a confident call to action
    - Is 3-4 paragraphs, professional but not stiff
    - Does NOT include a subject line or email header — just the letter body starting with the salutation
-4. Save the cover letter to a new file named `cover-letter-<role-slug>.md` in the same directory as the job description file, where `<role-slug>` is a lowercase, hyphenated version of the role title (e.g., `cover-letter-senior-backend-engineer.md`).
+4. Save the cover letter to a new file named `cover-letter-<role-slug>.txt` in the same directory as the job description file, where `<role-slug>` is a lowercase, hyphenated version of the role title (e.g., `cover-letter-senior-backend-engineer.txt`).
 
 Use the Read tool to read both files, then the Write tool to save the output. Confirm the output file path to the user when done.
